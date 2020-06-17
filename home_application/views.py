@@ -19,5 +19,5 @@ def show(request):
 # 默认从django request中获取用户登录态bk_token
     client = get_client_by_request(request)
     # 参数
-    result = client.cc.get_app_host_list()
-    return JsonResponse(str(result))
+    result = client.cc.search_host_lock()
+    return JsonResponse(result)
