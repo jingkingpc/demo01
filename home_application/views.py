@@ -12,26 +12,12 @@ specific language governing permissions and limitations under the License.
 """
 
 from django.shortcuts import render
-
-
-# 开发框架中通过中间件默认是需要登录态的，如有不需要登录的，可添加装饰器login_exempt
-# 装饰器引入 from blueapps.account.decorators import login_exempt
-def home(request):
-    """
-    首页
-    """
-    return render(request, 'home_application/index_home.html')
-
-
-def dev_guide(request):
-    """
-    开发指引
-    """
-    return render(request, 'home_application/dev_guide.html')
-
-
-def contact(request):
-    """
-    联系页
-    """
-    return render(request, 'home_application/contact.html')
+from blueking.component.shortcuts import get_client_by_request
+from django.http import JsonResponse
+def show(request):
+# 默认从django settings中获取APP认证信息：应用ID和安全密钥
+# 默认从django request中获取用户登录态bk_token
+    client = get_client_by_request(request)
+    # 参数
+    result = client.cc.get_app_host_list()
+    return JsonResponse({'data':result})
