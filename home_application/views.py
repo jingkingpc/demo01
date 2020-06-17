@@ -20,4 +20,4 @@ def show(request):
     client = get_client_by_request(request)
     # 参数
     result = client.cc.get_app_host_list()
-    return JsonResponse({'data':result})
+    return JsonResponse(result)
