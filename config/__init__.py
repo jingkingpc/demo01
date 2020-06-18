@@ -45,7 +45,7 @@ SECRET_KEY = '56e5b5bd-c16f-4824-a03a-ed47f9b3fd12'
 # SaaS运行版本，如非必要请勿修改
 RUN_VER = 'open'
 # 蓝鲸SaaS平台URL，例如 http://paas.bking.com
-BK_URL = "http://dev.bluetek.com"
+BK_URL = "http://paas.bluetek.com"
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(
     __file__)))

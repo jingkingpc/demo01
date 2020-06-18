@@ -17,6 +17,4 @@ from . import views
 
 urlpatterns = (
     url(r'^$', views.show),
-    # url(r'^dev-guide/$', views.dev_guide),
-    # url(r'^contact/$', views.contact),
 )

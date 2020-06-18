@@ -14,10 +14,17 @@ specific language governing permissions and limitations under the License.
 from django.shortcuts import render
 from blueking.component.shortcuts import get_client_by_request
 from django.http import JsonResponse
+
+
 def show(request):
-# 默认从django settings中获取APP认证信息：应用ID和安全密钥
-# 默认从django request中获取用户登录态bk_token
+    # 默认从django settings中获取APP认证信息：应用ID和安全密钥
+    # 默认从django request中获取用户登录态bk_token
     client = get_client_by_request(request)
+
     # 参数
-    result = client.cc.search_host_lock()
+    input={
+    "bk_host_id": 2
+    }
+    result = client.cc.search_host_lock(input)
+
     return JsonResponse(result)
