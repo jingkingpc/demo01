@@ -22,9 +22,6 @@ def show(request):
     client = get_client_by_request(request)
 
     # 参数
-    input={
-    "bk_host_id": 2
-    }
-    result = client.cc.search_host_lock(input)
-
+    result = client.cc.search_host()
+    print(result)
     return JsonResponse(result)
