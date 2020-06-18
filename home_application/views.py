@@ -14,6 +14,7 @@ specific language governing permissions and limitations under the License.
 from django.shortcuts import render
 from blueking.component.shortcuts import get_client_by_request
 from django.http import JsonResponse
+import json
 
 
 def show(request):
@@ -23,5 +24,21 @@ def show(request):
 
     # 参数
     result = client.cc.search_host()
-    print(result)
-    return JsonResponse(result)
+
+    out_dict01={key:value for key,value in result.items() if key=="data"}
+    out_dict02={key:value for key,value in out_dict01["data"].items()}
+    meg=[i for i in out_dict02["info"]]
+    ID_list=[i for i in range(1,4)]
+    mydict = dict.fromkeys(ID_list,None)
+    for i in range(3):
+        bk_host_name=meg[i]["host"]["bk_host_name"]
+        print(bk_host_name)
+        mydict[i+1]=bk_host_name
+    # print(type(mydict))
+    print(mydict)
+    return render(request,"show_table.html",{'mydict': mydict})
+    # return JsonResponse(out_list)
+    # return result
+
+
+#10.226.140.177 将test字段属性写成success
